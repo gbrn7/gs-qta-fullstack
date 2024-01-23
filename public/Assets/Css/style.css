@@ -7,7 +7,7 @@ body{
 }
 
 #side_nav{
-  background-color: #000;
+  background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
   max-width: 250px;
   min-width: 250px;
   font-weight: 400;
@@ -15,10 +15,61 @@ body{
   transition: all 0.3s;
 }
 
-.header-box{
+.card-dashboard:hover .card{
+  background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+  color: white;
+  border-color: white !important;
+}
 
+.card-dashboard:hover .card-text{
+  color: white !important;
+}
+
+
+.dropdown-list a{
+  text-decoration: none;
+}
+
+.dropdown-list:hover a{
+  background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%) !important; 
+  color: white !important;
+}
+
+
+.dropdown-list:hover i{
+  color: white;
+}
+
+.dropdown-list:hover a span{
+  color: white;
+}
+
+.header-box{
   text-align: center;
 }
+
+.dropdown-item:hover{
+  background-color:  hsl(0, 0%, 95%) !important;
+  color: black !important;
+}
+
+.dropdown .dropdown-item a {
+  color: black !important;
+}
+
+.dropdown .dropdown-menu .dropdown-item {
+  color: black !important;
+}
+
+
+ .text-dropdown{
+  color: black;
+}
+
+.dropdown-menu{
+  background-color: var(--dropdown-bg-color) !important;
+}
+
 
 .img-avatar{
   height: 45px;
@@ -28,7 +79,7 @@ body{
 }
 
 .header-text{
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 500;
 }
 
@@ -130,10 +181,6 @@ color: black;
   border-color: white;
 }
 
-.card-dashboard:hover .card{
-  background-color: #000;
-  color: white;
-}
 
 .col-2.img-menu i{
   font-size: 60px !important;

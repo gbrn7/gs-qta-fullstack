@@ -6,10 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="Assets/Css/Login style/main.css" />
-  <title>Login</title>
+  <title>Login | Sehat Qta</title>
 
   {{-- Icon --}}
-  <link rel="icon" href="{{asset('Assets/Img/apps-line.png')}}" type="image/x-icon">
+  <link rel="icon" href="{{asset('Assets/Img/hospital-line.png')}}" type="image/x-icon">
 
   <!-- Bootrsrap Css -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -32,7 +32,7 @@
           <div class="col-8 border border-2 signin-box p-3 p-sm-5 rounded rounded-5">
             <div class="header">
               <div class="text-center">
-                <h1 class="my-0 mt-lg-3">Sehat QTA</h1>
+                <h1 class="my-0 mt-lg-3">Sehat Qta</h1>
               </div>
               {{-- alert here --}}
               @if($errors->any()) {{-- handling jika ada eror --}}
@@ -57,7 +57,7 @@
                       placeholder="Masukan password" />
                   </div>
                 </div>
-                <button class="btn btn-primary login-btn mt-1 mt-lg-2" type="submit">
+                <button class="btn btn-sign-in text-white login-btn mt-1 mt-lg-2" type="submit">
                   Sign In
                 </button>
               </div>
