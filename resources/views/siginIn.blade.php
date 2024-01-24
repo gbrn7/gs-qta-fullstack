@@ -57,7 +57,7 @@
                       placeholder="Masukan password" />
                   </div>
                 </div>
-                <button class="btn btn-sign-in text-white login-btn mt-1 mt-lg-2" type="submit">
+                <button class="btn btn-sign-in text-white login-btn mt-1 mt-lg-2 border-white" type="submit">
                   Sign In
                 </button>
               </div>

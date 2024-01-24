@@ -1,5 +1,5 @@
 const body = document.querySelector("body");
-const load = document.querySelector(".loading-wrapper");
+const preloader = document.querySelector(".loading-wrapper");
 
 $(".sidebar ul li").on("click", function () {
   $(".sidebar ul li.active").removeClass("active");
@@ -19,16 +19,20 @@ $('#example').DataTable({
 });
 
 
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
 $(document).ready(function () {
-  load.classList.add('d-none');
+  preloader.classList.add("d-none");
 });
 
 function startLoading() {
-  load.classList.remove('d-none');
-  document.querySelector('html').style.cursor = "wait";
+  preloader.classList.remove('d-none');
+  document.querySelector("html").style.cursor = "wait";
 }
 
+
 function endLoading() {
-  load.classList.add("d-none");
-  document.querySelector('html').style.cursor = "default";
+  preloader.classList.add("d-none");
+  document.querySelector("html").style.cursor = "default";
 }

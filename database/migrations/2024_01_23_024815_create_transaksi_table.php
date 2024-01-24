@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('transaksi', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_cabang')->constrained('cabang');
-            $table->foreignId('id_jam_praktik')->constrained('jam_praktik');
+            $table->time('jam_mulai');
+            $table->time('jam_selesai');
             $table->string('nama_pasien');
             $table->string('alamat')->nullable();
             $table->string('no_telepon')->nullable();
             $table->date('tanggal_reservasi');
-            $table->text('keluhaan')->nullable();
+            $table->text('keluhan')->nullable();
             $table->timestamps();
         });
     }

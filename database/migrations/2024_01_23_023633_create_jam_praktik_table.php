@@ -18,6 +18,7 @@ return new class extends Migration
             $table->time('jam_selesai');
             $table->integer('kuota');
             $table->boolean('status')->default(true);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
