@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('alamat');
-            $table->string('no_telepon');
+            $table->string('no_telepon')->nullable();
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

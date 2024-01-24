@@ -17,8 +17,9 @@
         <a href="#" class="text-decoration-none px-3 py-3 rounded rounded-2 d-flex align-items-baseline"><i
             class="ri-calendar-schedule-line me-2"></i>Data Jam Praktik</a>
       </li>
-      <li class="rounded {{Request::segment(2) === 'alternatives' ? 'active' : ''}} rounded-2">
-        <a href="#" class="text-decoration-none px-3 py-3 rounded rounded-2 d-flex align-items-baseline"><i
+      <li class="rounded {{Request::segment(2) === 'data-cabang' ? 'active' : ''}} rounded-2">
+        <a href="{{route('admin.data.cabang')}}"
+          class="text-decoration-none px-3 py-3 rounded rounded-2 d-flex align-items-baseline"><i
             class="ri-building-2-line me-2"></i>Data Cabang</a>
       </li>
       <li class="rounded {{Request::segment(2) === 'data-transaksi' ? 'active' : ''}} rounded-2 data-transaksi">

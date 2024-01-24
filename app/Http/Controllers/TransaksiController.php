@@ -20,7 +20,6 @@ class TransaksiController extends Controller
     }
 
     public function filter(Request $request){
-        // dd($request->all());
         $dateRange = $request->dateRange;
         $dateColumn= $request->dateColumn;
 

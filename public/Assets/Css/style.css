@@ -184,6 +184,10 @@ color: black;
   overflow: auto;
 }
 
+.custom-tooltip{
+  font-family: 'Poppins', sans-serif;
+  
+}
 
 .col-2.img-menu i{
   font-size: 60px !important;
