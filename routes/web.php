@@ -34,7 +34,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
 
     Route::prefix('data-cabang')->group(function () {
         Route::get('/', [CabangController::class, 'index'])->name('admin.data.cabang');
-        Route::post('/', [CabangController::class, 'filter'])->name('admin.data.cabang.filter');
+        Route::post('/', [CabangController::class, 'index'])->name('admin.data.cabang.filter');
         Route::post('/store', [CabangController::class, 'store'])->name('admin.data.cabang.store');
         Route::put('/update', [CabangController::class, 'update'])->name('admin.data.cabang.update');
         Route::delete('/destroy', [CabangController::class, 'delete'])->name('admin.data.cabang.delete');
@@ -42,7 +42,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
 
     Route::prefix('/data-transaksi')->group(function () {
         Route::get('/', [TransaksiController::class, 'index'])->name('admin.data.transaksi');
-        Route::post('/', [TransaksiController::class, 'filter'])->name('admin.data.transaksi.filter');
+        Route::post('/', [TransaksiController::class, 'index'])->name('admin.data.transaksi.filter');
     });
 
 

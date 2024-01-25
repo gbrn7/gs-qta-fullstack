@@ -8,18 +8,8 @@ use App\Models\Cabang;
 
 class TransaksiController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
         
-        $transactions = Transaksi::with('cabang')
-                        ->orderBy('id', 'desc')
-                        ->paginate(10);
-
-        $branchs = Cabang::all();
-
-        return view('data-transaksi', compact('transactions', 'branchs'));
-    }
-
-    public function filter(Request $request){
         $dateRange = $request->dateRange;
         $dateColumn= $request->dateColumn;
 
@@ -42,4 +32,6 @@ class TransaksiController extends Controller
         'endDate' => $dateRange ? date("y-m-d", strtotime(explode(" - ",$dateRange)[1])) : null,
         ]) ;
     }
+
+
 }

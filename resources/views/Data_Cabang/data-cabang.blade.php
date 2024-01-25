@@ -31,18 +31,9 @@
     <div id="add" data-bs-toggle="modal" data-bs-target="#addnew" class="btn btn-success"><i
         class="ri-add-box-line me-2"></i>Tambah Cabang</div>
 
-    <form action="{{route('admin.data.cabang.filter')}}" method="POST">
+    <form action="{{route('admin.data.cabang')}}" method="POST">
       @csrf
       <div class="filter-wrapper row align-items-end mt-2">
-        <div class=" form-group col-12 mt-2 col-lg-1">
-          <label class="mb-1 text-left">Show :</label>
-          <select name="paginate" class="form-select">
-            <option @isset($paginate) @if ($paginate==10) selected @endif @endisset value="10">10</option>
-            <option @isset($paginate) @if ($paginate==25) selected @endif @endisset value="25">25</option>
-            <option @isset($paginate) @if ($paginate==50) selected @endif @endisset value="50">50</option>
-            <option @isset($paginate) @if ($paginate==100) selected @endif @endisset value="100">100</option>
-          </select>
-        </div>
 
         <div class="form-group col-12 mt-2 col-md-2">
           <label for="keyword" class="mb-1 text-left">Cari Nama :</label>

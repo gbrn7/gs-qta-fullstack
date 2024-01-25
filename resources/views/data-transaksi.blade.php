@@ -31,19 +31,9 @@
     </div>
 
 
-    <form action="{{route('admin.data.transaksi.filter')}}" method="POST">
+    <form action="{{route('admin.data.transaksi')}}" method="GET">
       @csrf
       <div class="filter-wrapper row align-items-end">
-        <div class=" form-group col-12 mt-2 col-md-1">
-          <label class="mb-1 text-left">Show :</label>
-          <select name="paginate" class="form-select">
-            <option @isset($paginate) @if ($paginate==10) selected @endif @endisset value="10">10</option>
-            <option @isset($paginate) @if ($paginate==25) selected @endif @endisset value="25">25</option>
-            <option @isset($paginate) @if ($paginate==50) selected @endif @endisset value="50">50</option>
-            <option @isset($paginate) @if ($paginate==100) selected @endif @endisset value="100">100</option>
-          </select>
-        </div>
-
         <div class=" form-group col-12 mt-2 col-md-2">
           <label class="mb-1 text-left">Cabang :</label>
           <select name="branchId" class="form-select">

@@ -8,22 +8,13 @@ use Illuminate\Support\Facades\DB;
 
 class CabangController extends Controller
 {
-    public function index()
-    {
-        $branchs = Cabang::OrderBy('id', 'desc')
-                            ->paginate(10);
-        
-        return view('Data_Cabang.data-cabang', ['branchs' => $branchs]);
-    }
-
-    public function filter(Request $request)
+    public function index(Request $request)
     {
         $branchs = Cabang::where('nama', 'like', '%'.$request->nama.'%')
                     ->orderBy('id', 'desc')
-                    ->paginate($request->paginate);
+                    ->paginate(10);
         
-        return view('Data_Cabang.data-cabang', ['branchs' => $branchs, 'nama' => $request->nama]);
-        
+                    return view('Data_Cabang.data-cabang', ['branchs' => $branchs, 'nama' => $request->nama]);
     }
 
     public function store(Request $request)
