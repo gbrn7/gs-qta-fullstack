@@ -13,8 +13,9 @@
           class="text-decoration-none px-3 py-3 rounded rounded-2 d-flex align-items-baseline"><i
             class="ri-dashboard-line me-2"></i>Home</a>
       </li>
-      <li class="rounded {{Request::segment(2) === 'criteria' ? 'active' : ''}} rounded-2">
-        <a href="#" class="text-decoration-none px-3 py-3 rounded rounded-2 d-flex align-items-baseline"><i
+      <li class="rounded {{Request::segment(2) === 'data-jam-praktik' ? 'active' : ''}} rounded-2">
+        <a href="{{route('admin.data.jam-praktik')}}"
+          class="text-decoration-none px-3 py-3 rounded rounded-2 d-flex align-items-baseline"><i
             class="ri-calendar-schedule-line me-2"></i>Data Jam Praktik</a>
       </li>
       <li class="rounded {{Request::segment(2) === 'data-cabang' ? 'active' : ''}} rounded-2">

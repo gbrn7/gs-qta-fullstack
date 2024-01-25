@@ -43,6 +43,7 @@
             <option @isset($paginate) @if ($paginate==100) selected @endif @endisset value="100">100</option>
           </select>
         </div>
+
         <div class=" form-group col-12 mt-2 col-md-2">
           <label class="mb-1 text-left">Cabang :</label>
           <select name="branchId" class="form-select">
@@ -119,7 +120,7 @@
           @endforeach
         </tbody>
       </table>
-      {{-- {{$transactions->links('pagination::bootstrap-5')}} --}}
+      {{$transactions->links('pagination::bootstrap-5')}}
     </div>
   </div>
 </div>

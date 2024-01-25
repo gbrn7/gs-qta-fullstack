@@ -15,7 +15,7 @@
 <div class="content-box p-3 mt-3 rounded rounded-2 bg-white">
   <div class="content rounded rounded-2 border border-1 p-3">
     <div class="row row-gap-3 row-cols-1 row-cols-md-2">
-      <a href="#" class="h-100 card-dashboard text-decoration-none">
+      <a href="{{route('admin.data.jam-praktik')}}" class="h-100 card-dashboard text-decoration-none">
         <div class="card h-100">
           <div class="card-body  row h-100 justify-content-between align-items-center">
             <div class="card-body-content h-100 col-9">
@@ -29,7 +29,7 @@
           </div>
         </div>
       </a>
-      <a href="#" class="h-100 card-dashboard text-decoration-none">
+      <a href="{{route('admin.data.cabang')}}" class="h-100 card-dashboard text-decoration-none">
         <div class="card h-100">
           <div class="card-body  row h-100 justify-content-between align-items-center">
             <div class="card-body-content h-100 col-9">

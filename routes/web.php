@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\CabangController;
+use App\Http\Controllers\JamPraktikController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +26,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::put('/updateCurrentUser', [AuthController::class, 'updateUserData'])->name('admin.updateCurrentUser');
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('admin.logout');
+
+    Route::prefix('/data-jam-praktik')->group(function () {
+        Route::get('/', [JamPraktikController::class, 'index'])->name('admin.data.jam-praktik');
+        Route::post('/', [JamPraktikController::class, 'filter'])->name('admin.data.jam-praktik.filter');
+    });
 
     Route::prefix('data-cabang')->group(function () {
         Route::get('/', [CabangController::class, 'index'])->name('admin.data.cabang');

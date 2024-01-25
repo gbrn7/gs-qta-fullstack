@@ -1,14 +1,14 @@
 @extends('layouts.base')
 @section('content')
 <div class="title-box  d-flex gap-2 align-items-baseline"><i class="ri-building-2-line fs-2"></i>
-  <p class="fs-3 m-0">Data Cabang</p>
+  <p class="fs-3 m-0">Data Jam Praktik</p>
 </div>
 <div class="breadcrumbs-box mt-2 rounded rounded-2 bg-white p-2">
   <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
     <ol class="breadcrumb m-0">
-      <li class="breadcrumb-item d-flex gap-2 align-items-center"><i class="ri-arrow-left-right-line"></i>Sehat Qta
+      <li class="breadcrumb-item d-flex gap-2 align-items-center"><i class="ri-calendar-schedule-line"></i>Sehat Qta
       </li>
-      <li class="breadcrumb-item active" aria-current="page">Data Cabang</li>
+      <li class="breadcrumb-item active" aria-current="page">Data Jam Praktik</li>
     </ol>
   </nav>
 </div>
@@ -31,23 +31,25 @@
     <div id="add" data-bs-toggle="modal" data-bs-target="#addnew" class="btn btn-success"><i
         class="ri-add-box-line me-2"></i>Tambah Cabang</div>
 
-    <form action="{{route('admin.data.cabang.filter')}}" method="POST">
+    <form action="{{route('admin.data.jam-praktik')}}" method="GET">
       @csrf
       <div class="filter-wrapper row align-items-end mt-2">
-        <div class=" form-group col-12 mt-2 col-lg-1">
-          <label class="mb-1 text-left">Show :</label>
-          <select name="paginate" class="form-select">
-            <option @isset($paginate) @if ($paginate==10) selected @endif @endisset value="10">10</option>
-            <option @isset($paginate) @if ($paginate==25) selected @endif @endisset value="25">25</option>
-            <option @isset($paginate) @if ($paginate==50) selected @endif @endisset value="50">50</option>
-            <option @isset($paginate) @if ($paginate==100) selected @endif @endisset value="100">100</option>
+        <div class=" form-group col-12 mt-2 col-md-2">
+          <label class="mb-1 text-left">Cabang :</label>
+          <select name="branchId" class="form-select">
+            <option value="">semua</option>
+            @foreach ($branchs as $branch)
+            <option value="{{$branch->id}}" @isset($selectedBranch) @if ($branch->id == $selectedBranch) selected @endif
+              @endisset>
+              {{$branch->nama}}</option>
+            @endforeach
           </select>
         </div>
 
         <div class="form-group col-12 mt-2 col-md-2">
-          <label for="keyword" class="mb-1 text-left">Cari Nama :</label>
+          <label for="keyword" class="mb-1 text-left">Tanggal :</label>
           <div class="input-group">
-            <input class="form-control col-8" type="text" name="nama" value="@isset($nama) {{$nama}} @endisset" />
+            <input class="form-control col-8 tanggal" type="date" name="nama" />
           </div>
         </div>
 
@@ -56,7 +58,7 @@
         </div>
 
         <div class="wrapper col-12 col-xl-2 mt-xl-0 mt-2 ">
-          <a href="{{route('admin.data.cabang')}}" class="text-decoration-none">
+          <a href="{{route('admin.data.jam-praktik')}}" class="text-decoration-none">
             <div class="btn btn-success w-100">Reset</div>
           </a>
         </div>
@@ -68,28 +70,36 @@
         <thead>
           <tr>
             <th class="text-secondary">ID</th>
-            <th class="text-secondary">Nama</th>
-            <th class="text-secondary">Alamat</th>
-            <th class="text-secondary">No Telepon</th>
+            <th class="text-secondary">Nama Cabang</th>
+            <th class="text-secondary">Jam Praktik</th>
+            <th class="text-secondary">Kuota</th>
+            <th class="text-secondary">Sisa</th>
             <th class="text-secondary">Status</th>
             <th class="text-secondary">Aksi</th>
           </tr>
         </thead>
         <tbody id="tableBody">
-          @foreach ($branchs as $branch)
+          @foreach ($times as $time)
           <tr>
-            <td>{{$branch->id}}</td>
-            <td>{{$branch->nama}}</td>
-            <td>{{$branch->alamat}}</td>
-            <td>{{$branch->no_telepon}}</td>
-            <td>{{$branch->status ? 'Aktif' : 'Tidak Aktif'}}</td>
+            <td>{{$time->id}}</td>
+            <td>{{$time->cabang->nama}}</td>
+            <td>{{date('H:i' ,strtotime($time->jam_mulai)).'-'.date('H:i' ,strtotime($time->jam_selesai))}}
+            <td>{{$time->kuota}}</td>
+            <td>{{$time->sisa}}</td>
+            <td>{{$time->status ? 'Aktif' : 'Tidak Aktif'}}</td>
             <td class="">
               <div class="btn-wrapper d-flex gap-2 flex-wrap">
-                <a href="#" data-id="{{$branch->id}}" data-nama="{{$branch->nama}}" data-alamat="{{$branch->alamat}}"
-                  data-no-telepon="{{$branch->no_telepon}}" data-status="{{$branch->status}}"
-                  class="btn edit btn-action btn-warning text-white"><i class="bx bx-edit"></i></a>
-                <a href="#" class="delete btn btn-action btn-danger text-white" data-nama="{{$branch->nama}}"
-                  data-id="{{$branch->id}}">
+                <a href="#" data-id="{{$time->id}}" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip"
+                  data-bs-title="Perbarui jam" data-cabang-nama="{{$time->cabang->nama}}"
+                  data-jam-mulai="{{date('H:i' ,strtotime($time->jam_mulai))}}"
+                  data-jam-selesai="{{date('H:i' ,strtotime($time->jam_selesai))}}" data-kuota="{{$time->kuota}}"
+                  data-status="{{$time->status}}" class="btn edit btn-action btn-warning text-white"><i
+                    class="bx bx-edit"></i></a>
+                <a href="#" class="delete btn btn-action btn-danger text-white" data-bs-toggle="tooltip"
+                  data-bs-custom-class="custom-tooltip" data-bs-title="Hapus data cabang"
+                  data-jam-mulai="{{date('H:i' ,strtotime($time->jam_mulai))}}"
+                  data-jam-selesai="{{date('H:i' ,strtotime($time->jam_selesai))}}"
+                  data-cabang-nama="{{$time->cabang->nama}}" data-id="{{$time->id}}">
                   <i class="bx bx-trash"></i>
                 </a>
               </div>
@@ -98,15 +108,23 @@
           @endforeach
         </tbody>
       </table>
-      {{$branchs->links('pagination::bootstrap-5')}}
+      {{$times->links('pagination::bootstrap-5')}}
     </div>
   </div>
 </div>
 @endsection
-@include('Data_Cabang.modal.data-cabang-modal')
+
 
 @push('js')
 <script type="text/javascript">
+  let tanggal =  document.querySelector('.tanggal');
+  
+  @if (isset($tanggal))
+  tanggal.value = $tanggal;
+  @else
+  tanggal.value = (moment().format('YYYY-MM-DD'));
+  @endif
+
   $(document).on('click', '.edit', function (event){
           event.preventDefault();
           let id = $(this).data('id');

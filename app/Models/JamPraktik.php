@@ -13,11 +13,14 @@ class JamPraktik extends Model
     protected $table = 'jam_praktik';
 
     protected $fillable = [
-        'id',
         'id_cabang',
         'jam_mulai',
         'jam_selesai',
         'kuota',
         'status',
     ];
+
+    public function cabang(){
+        return $this->belongsTo(Cabang::class, 'id_cabang');
+    }
 }
