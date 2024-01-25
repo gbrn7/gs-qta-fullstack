@@ -20,6 +20,9 @@ Route::post('/sign-in-admin', [AuthController::class, 'authenticate'])->name('si
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::get('/home', [AdminController::class, 'index'])->name('admin.home');
+    
+    Route::get('/getCurrentUser', [AuthController::class, 'getCurrentUser'])->name('admin.getCurrentUser');
+    Route::put('/updateCurrentUser', [AuthController::class, 'updateUserData'])->name('admin.updateCurrentUser');
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('admin.logout');
 

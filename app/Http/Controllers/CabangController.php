@@ -90,7 +90,8 @@ class CabangController extends Controller
 
     }
 
-    public function delete(Request $request){
+    public function delete(Request $request)
+    {
         $branchId = $request->validate(
             [
                 'id' => 'required',
