@@ -29,7 +29,7 @@
     </div>
 
     <div id="add" data-bs-toggle="modal" data-bs-target="#addnew" class="btn btn-success"><i
-        class="ri-add-box-line me-2"></i>Tambah Cabang</div>
+        class="ri-add-box-line me-2"></i>Tambah Jam Praktik</div>
 
     <form action="{{route('admin.data.jam-praktik')}}" method="GET">
       @csrf
@@ -49,7 +49,7 @@
         <div class="form-group col-12 mt-2 col-md-2">
           <label for="keyword" class="mb-1 text-left">Tanggal :</label>
           <div class="input-group">
-            <input class="form-control col-8 tanggal" type="date" name="nama" />
+            <input class="form-control col-8 tanggal-filter" type="date" name="tanggal" />
           </div>
         </div>
 
@@ -89,14 +89,12 @@
             <td>{{$time->status ? 'Aktif' : 'Tidak Aktif'}}</td>
             <td class="">
               <div class="btn-wrapper d-flex gap-2 flex-wrap">
-                <a href="#" data-id="{{$time->id}}" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip"
-                  data-bs-title="Perbarui jam" data-cabang-nama="{{$time->cabang->nama}}"
+                <a href="#" data-id="{{$time->id}}" data-cabang-nama="{{$time->cabang->nama}}"
                   data-jam-mulai="{{date('H:i' ,strtotime($time->jam_mulai))}}"
                   data-jam-selesai="{{date('H:i' ,strtotime($time->jam_selesai))}}" data-kuota="{{$time->kuota}}"
                   data-status="{{$time->status}}" class="btn edit btn-action btn-warning text-white"><i
                     class="bx bx-edit"></i></a>
-                <a href="#" class="delete btn btn-action btn-danger text-white" data-bs-toggle="tooltip"
-                  data-bs-custom-class="custom-tooltip" data-bs-title="Hapus data cabang"
+                <a href="#" class="delete btn btn-action btn-danger text-white"
                   data-jam-mulai="{{date('H:i' ,strtotime($time->jam_mulai))}}"
                   data-jam-selesai="{{date('H:i' ,strtotime($time->jam_selesai))}}"
                   data-cabang-nama="{{$time->cabang->nama}}" data-id="{{$time->id}}">
@@ -114,16 +112,13 @@
 </div>
 @endsection
 
+@include('Data_Jam_Praktik.modal.data-jam-praktik-modal')
+
 
 @push('js')
 <script type="text/javascript">
-  let tanggal =  document.querySelector('.tanggal');
-  
-  @if (isset($tanggal))
-  tanggal.value = $tanggal;
-  @else
-  tanggal.value = (moment().format('YYYY-MM-DD'));
-  @endif
+  let tanggal =  document.querySelector('.tanggal-filter');
+  tanggal.value = (moment("{{$tanggal}}").format('YYYY-MM-DD'));
 
   $(document).on('click', '.edit', function (event){
           event.preventDefault();

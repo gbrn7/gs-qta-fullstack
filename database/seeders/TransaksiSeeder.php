@@ -48,7 +48,7 @@ class TransaksiSeeder extends Seeder
             'nama_pasien' => "Siti",
             'alamat' => "Jogja",
             'no_telepon' => "085625874563",
-            'tanggal_reservasi' => date("Y-m-d", strtotime('2024-01-26')),
+            'tanggal_reservasi' => date("Y-m-d", strtotime('2024-01-27')),
             'keluhan' => 'Nyeri Pinggang',
             'created_at' => now(),
             'updated_at' => now(),

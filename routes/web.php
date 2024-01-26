@@ -29,7 +29,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
 
     Route::prefix('/data-jam-praktik')->group(function () {
         Route::get('/', [JamPraktikController::class, 'index'])->name('admin.data.jam-praktik');
-        Route::post('/', [JamPraktikController::class, 'filter'])->name('admin.data.jam-praktik.filter');
+        Route::post('/', [JamPraktikController::class, 'index'])->name('admin.data.jam-praktik.filter');
+        Route::post('/store', [JamPraktikController::class, 'store'])->name('admin.data.jam-praktik.store');
     });
 
     Route::prefix('data-cabang')->group(function () {
