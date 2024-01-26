@@ -43,53 +43,82 @@ class JamPraktikController extends Controller
         return view('Data_Jam_Praktik.data-jam-praktik', ['times' => $times, 'branchs' => $branchs, 'selectedBranch' => $request->branchId ? $request->branchId: null, 'tanggal' => $tanggal]);
      }
 
-     public function store(Request $request){
+     public function store(Request $request)
+     {
+         $jamPraktik = $request->validate(
+            [
+               'id_cabang' => 'nullable|string',
+               'jam_mulai' => 'required',
+               'jam_selesai' => 'required',
+               'kuota' => 'required|numeric',
+               'status' => 'required|boolean',
+            ], 
+            [
+               'required' => 'Data :attribute harus diisi',
+               'string' => 'Data :attribute harus bertipe String',
+               'numerix' => 'Data :attribute harus bertipe Angka',
+               'boolean' => 'Data :attribute harus bertipe Boolean',
+            ]
+      );
 
-      // dd($request->all());
-      $jamPraktik = $request->validate(
+         DB::beginTransaction();
+
+         try {
+            if(isset($jamPraktik['id_cabang'])){
+               JamPraktik::create($jamPraktik);
+            }else{
+               $branchs = Cabang::all();
+               $bulkInsert = [];
+               foreach ($branchs as $key => $branch) {
+                  $arr = [
+                     'id_cabang' => $branch->id,
+                     'jam_mulai' => $jamPraktik['jam_mulai'],
+                     'jam_selesai' => $jamPraktik['jam_selesai'],
+                     'kuota' => $jamPraktik['kuota'],
+                     'status' => $jamPraktik['status'],
+                  ];
+                  array_push($bulkInsert, $arr);
+               }
+               JamPraktik::insert($bulkInsert);
+            }
+
+               DB::commit();
+
+               return redirect()->route('admin.data.jam-praktik')->with('toast_success', 'Berhasil menambahkan Jam Praktik'.$request->nama);
+         } catch (\Throwable $th) {
+               DB::rollback();
+               return back()->with('toast_error', $th->getMessage());
+         }
+     }
+
+     public function update(Request $request){
+      $jamPraktikBaru = $request->validate(
          [
-             'id_cabang' => 'nullable|string',
-             'jam_mulai' => 'required',
-             'jam_selesai' => 'required',
-             'kuota' => 'required|numeric',
-             'status' => 'required|boolean',
+            'id' => 'required',
+            'id_cabang' => 'required',
+            'jam_mulai' => 'required',
+            'jam_selesai' => 'required',
+            'kuota' => 'required|numeric',
+            'status' => 'required|boolean',
          ], 
          [
-             'required' => 'Data :attribute harus diisi',
-             'string' => 'Data :attribute harus bertipe String',
-             'numerix' => 'Data :attribute harus bertipe Angka',
-             'boolean' => 'Data :attribute harus bertipe Boolean',
+            'required' => 'Data :attribute harus diisi',
+            'string' => 'Data :attribute harus bertipe String',
+            'numerix' => 'Data :attribute harus bertipe Angka',
+            'boolean' => 'Data :attribute harus bertipe Boolean',
          ]
-     );
+   );
 
-     DB::beginTransaction();
-
+      DB::beginTransaction();
       try {
+         $jamPraktikLama = JamPraktik::find($request->id);
+         $jamPraktikLama->update($jamPraktikBaru);
 
-         if(isset($jamPraktik['id_cabang'])){
-            JamPraktik::create($jamPraktik);
-         }else{
-            $branchs = Cabang::all();
-            $bulkInsert = [];
-            foreach ($branchs as $key => $branch) {
-               $arr = [
-                  'id_cabang' => $branch->id,
-                  'jam_mulai' => $jamPraktik['jam_mulai'],
-                  'jam_selesai' => $jamPraktik['jam_selesai'],
-                  'kuota' => $jamPraktik['kuota'],
-                  'status' => $jamPraktik['status'],
-               ];
-               array_push($bulkInsert, $arr);
-            }
-            JamPraktik::insert($bulkInsert);
-         }
-
-            DB::commit();
-
-            return redirect()->route('admin.data.jam-praktik')->with('toast_success', 'Berhasil menambahkan Jam Praktik'.$request->nama);
+         DB::commit();
+         return redirect()->route('admin.data.jam-praktik')->with('toast_success', 'Berhasil memperbarui data jam praktik');
       } catch (\Throwable $th) {
-            DB::rollback();
-            return back()->with('toast_error', $th->getMessage());
+         DB::rollback();
+         return back()->with('toast_error', $th->getMessage());
       }
      }
 }

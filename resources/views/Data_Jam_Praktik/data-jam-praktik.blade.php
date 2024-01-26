@@ -89,7 +89,7 @@
             <td>{{$time->status ? 'Aktif' : 'Tidak Aktif'}}</td>
             <td class="">
               <div class="btn-wrapper d-flex gap-2 flex-wrap">
-                <a href="#" data-id="{{$time->id}}" data-cabang-nama="{{$time->cabang->nama}}"
+                <a href="#" data-id="{{$time->id}}" data-cabang-id="{{$time->id_cabang}}"
                   data-jam-mulai="{{date('H:i' ,strtotime($time->jam_mulai))}}"
                   data-jam-selesai="{{date('H:i' ,strtotime($time->jam_selesai))}}" data-kuota="{{$time->kuota}}"
                   data-status="{{$time->status}}" class="btn edit btn-action btn-warning text-white"><i
@@ -123,15 +123,19 @@
   $(document).on('click', '.edit', function (event){
           event.preventDefault();
           let id = $(this).data('id');
-          let nama = $(this).data('nama');
-          let alamat = $(this).data('alamat');
-          let no_telepon = $(this).data('no-telepon');
+          let id_cabang = $(this).data('cabang-id');
+          let jam_mulai = $(this).data('jam-mulai');
+          let jam_selesai = $(this).data('jam-selesai');
+          let kuota = $(this).data('kuota');
           let status = $(this).data('status');
+
+          console.log(id_cabang);
           $('#editmodal').modal('show');
           $('#id-edit').val(id);
-          $('#nama-edit').val(nama);
-          $('#alamat-edit').val(alamat);
-          $('#no_telepon-edit').val(no_telepon);
+          $('#id-cabang-edit').val(id_cabang);
+          $('#jam-mulai-edit').val(jam_mulai);
+          $('#jam-selesai-edit').val(jam_selesai);
+          $('#kuota-edit').val(kuota);
           $('#status-edit').val(status);
       });
        
