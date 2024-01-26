@@ -91,7 +91,8 @@ class JamPraktikController extends Controller
          }
      }
 
-     public function update(Request $request){
+     public function update(Request $request)
+     {
       $jamPraktikBaru = $request->validate(
          [
             'id' => 'required',
@@ -107,18 +108,34 @@ class JamPraktikController extends Controller
             'numerix' => 'Data :attribute harus bertipe Angka',
             'boolean' => 'Data :attribute harus bertipe Boolean',
          ]
-   );
+      );
 
-      DB::beginTransaction();
-      try {
-         $jamPraktikLama = JamPraktik::find($request->id);
-         $jamPraktikLama->update($jamPraktikBaru);
+         DB::beginTransaction();
+         try {
+            $jamPraktikLama = JamPraktik::find($request->id);
+            $jamPraktikLama->update($jamPraktikBaru);
 
-         DB::commit();
-         return redirect()->route('admin.data.jam-praktik')->with('toast_success', 'Berhasil memperbarui data jam praktik');
-      } catch (\Throwable $th) {
-         DB::rollback();
-         return back()->with('toast_error', $th->getMessage());
-      }
+            DB::commit();
+            return redirect()->route('admin.data.jam-praktik')->with('toast_success', 'Berhasil memperbarui data jam praktik');
+         } catch (\Throwable $th) {
+            DB::rollback();
+            return back()->with('toast_error', $th->getMessage());
+         }
+     }
+
+     public function delete(Request $request)
+     {
+         $jamPraktikId = $request->validate(
+            [
+               'id' => 'required',
+            ], 
+            [
+               'required' => 'Data :attribute harus ada',
+            ]
+      );
+
+         $jamPraktik = JamPraktik::where('id',$jamPraktikId)->firstorfail()->delete();
+
+         return redirect()->route('admin.data.jam-praktik')->with('toast_success', 'Data Jam Praktik dihapus!');
      }
 }

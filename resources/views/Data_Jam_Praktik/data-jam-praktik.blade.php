@@ -97,7 +97,7 @@
                 <a href="#" class="delete btn btn-action btn-danger text-white"
                   data-jam-mulai="{{date('H:i' ,strtotime($time->jam_mulai))}}"
                   data-jam-selesai="{{date('H:i' ,strtotime($time->jam_selesai))}}"
-                  data-cabang-nama="{{$time->cabang->nama}}" data-id="{{$time->id}}">
+                  data-cabang-nama="{{$time->cabang->nama}}" data-id-delete="{{$time->id}}">
                   <i class="bx bx-trash"></i>
                 </a>
               </div>
@@ -141,11 +141,14 @@
        
       $(document).on('click', '.delete', function(event){
           event.preventDefault();
-          let id = $(this).data('id');
-          let nama = $(this).data('nama');
+          let id = $(this).data('id-delete');
+          let nama = $(this).data('cabang-nama');
+          let jam_mulai = $(this).data('jam-mulai');
+          let jam_selesai = $(this).data('jam-selesai');          
           $('#deletemodal').modal('show');
           $('#delete-id').val(id);
-          $('.cabang-nama').html(nama);
+          $('.jam-praktik-modal-delete').html(`${jam_mulai}-${jam_selesai}`);
+          $('.cabang-nama-delete').html(nama);
       });
 </script>
 @endpush

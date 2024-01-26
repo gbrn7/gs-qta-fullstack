@@ -24,7 +24,7 @@ class TransaksiController extends Controller
                             return $query->whereBetween($dateColumn, [$startDate, $endDate]);
                         })
                         ->orderBy('id', 'desc')
-                        ->paginate($request->paginate);
+                        ->paginate(10);
 
         return view('data-transaksi', ['transactions' => $transactions, 'paginate' => $request->paginate, 
         'nama' => $request->nama, 'branchs'=> Cabang::all(), 'selectedBranch' => $request->branchId , 'dateColumn'=> $dateColumn, 

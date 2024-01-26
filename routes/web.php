@@ -32,6 +32,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
         Route::post('/', [JamPraktikController::class, 'index'])->name('admin.data.jam-praktik.filter');
         Route::post('/store', [JamPraktikController::class, 'store'])->name('admin.data.jam-praktik.store');
         Route::put('/edit', [JamPraktikController::class, 'update'])->name('admin.data.jam-praktik.update');
+        Route::delete('/destroy', [JamPraktikController::class, 'delete'])->name('admin.data.jam-praktik.delete');
     });
 
     Route::prefix('data-cabang')->group(function () {

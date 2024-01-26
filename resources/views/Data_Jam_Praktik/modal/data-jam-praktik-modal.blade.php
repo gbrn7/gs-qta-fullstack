@@ -117,17 +117,18 @@
 </div>
 
 <!-- Delete Modal -->
-{{-- <div class="modal fade" id="deletemodal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="deletemodal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog ">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="myModalLabel">Hapus Cabang</h5>
+        <h5 class="modal-title" id="myModalLabel">Hapus Jam Praktik</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <h4 class="text-center">Apakah anda yakin mengapus cabang <span class="cabang-nama"></span>?</h4>
+        <h4 class="text-center">Apakah anda yakin mengapus Jam Praktik <span class="jam-praktik-modal-delete"></span>
+          pada cabang <span class="cabang-nama-delete"></span>?</h4>
       </div>
-      <form action="{{route('admin.data.cabang.delete')}}" method="post">
+      <form action="{{route('admin.data.jam-praktik.delete')}}" method="post">
         @method('delete')
         @csrf
         <input type="hidden" name="id" id="delete-id">
@@ -138,4 +139,4 @@
     </div>
   </div>
 </div>
-</div> --}}
+</div>
