@@ -91,6 +91,7 @@
             <th class="text-secondary">No Telepon</th>
             <th class="text-secondary">Tanggal Reservasi</th>
             <th class="text-secondary">Tanggal Transaksi</th>
+            <th class="text-secondary">Keluhan Utama</th>
           </tr>
         </thead>
         <tbody id="tableBody">
@@ -106,6 +107,9 @@
             <td>{{$transaction->no_telepon}}</td>
             <td>{{$transaction->tanggal_reservasi}}</td>
             <td>{{date('Y-m-d' ,strtotime($transaction->created_at))}}</td>
+            <td class="kolom-keluhan">
+              {{$transaction->keluhan}}
+            </td>
           </tr>
           @endforeach
         </tbody>
