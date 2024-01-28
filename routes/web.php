@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\CabangController;
 use App\Http\Controllers\JamPraktikController;
+use App\Http\Controllers\ClientController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +17,12 @@ use App\Http\Controllers\JamPraktikController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('', [ClientController::class, 'index'])->name('client.index');
+Route::get('/form-reservasi', [ClientController::class, 'formView'])->name('client.form');
+Route::get('/get-jam-praktik', [ClientController::class, 'getJamPraktik'])->name('client.getJamPraktik');
+Route::post('/create-transaction', [ClientController::class, 'storeTransaction'])->name('client.storeTransaction');
+
 Route::get('/sign-in-admin', [AuthController::class, 'index'])->name('signIn');
 Route::post('/sign-in-admin', [AuthController::class, 'authenticate'])->name('signIn.auth');
 

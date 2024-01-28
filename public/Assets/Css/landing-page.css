@@ -1,0 +1,196 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@100;300;400;500;600;700;900&display=swap");
+body {
+  font-family: "Poppins", sans-serif;
+  transition: 0.5s all ease;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  background-color: whitesmoke;
+}
+.home{
+  background-image: url(../Img/relax-686392_1920.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  background-attachment: fixed;
+  height: 100vh;
+}
+
+.home .tagline-wrapper  .header-text{
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.home .tagline-wrapper .tagline{
+  font-size: 50px;
+  font-weight: 600;
+}
+
+.icon-wa{
+  font-size: 18px;
+}
+
+
+.wave-2{
+  top: -10px;
+  z-index: 50;
+}
+
+.slimTreatment{
+  padding: 100px;
+}
+
+ .text-header{
+  font-weight: 400;
+  font-size: 20px;
+}
+
+
+.home .desc-text{
+  font-size: 18px;
+  font-weight: 400;
+}
+.custom-shape-divider-top-1706349475 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1706349475 svg {
+  position: relative;
+  display: block;
+  width: calc(108% + 1.3px);
+  height: 78px;
+}
+
+.custom-shape-divider-top-1706349475 .shape-fill {
+  fill: #F5F5F5;
+}
+
+.img-logo{
+  width: 100px;
+}
+
+.custom-shape-divider-bottom-1706349415 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1706349415 svg {
+  position: relative;
+  display: block;
+  width: calc(114% + 1.3px);
+  height: 217px;
+}
+
+.custom-shape-divider-bottom-1706349415 .shape-fill {
+  fill: #F5F5F5;
+}
+
+
+.home .footer-wrapper .btn-cta{
+  background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+  border: none;
+}
+
+.home .footer-wrapper .cta-text{
+  font-weight: 400;
+  font-size: 17px;
+}
+
+.navbar-toggler{
+  color: #f5f5f5 !important;
+}
+
+.beauty-section{
+  background: url(../Img/sixteen-miles-out-6pxsopTGyeU-unsplash.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.text-content{
+  padding: 50px;
+  background-color: white;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.service-wrapper .title{
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.service-wrapper .desc{
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.navbar-toggler-icon{
+  color: white !important;
+}
+
+@media (max-width: 767.98px) {
+
+  .text-content{
+    padding: 30px;
+
+  }
+
+  .home .tagline-wrapper  .header-text{
+    font-size: 12px;
+  }
+
+  .collapse.nav-collapse{
+    background-color: rgba(0, 0, 0, 0.658);
+    
+  }
+  
+  .home .tagline-wrapper .tagline{
+    font-size: 28px;
+  }
+
+  .home .desc-text{
+    font-size: 12px;
+  }
+
+  .home .footer-wrapper .btn-cta{
+    font-size: 12px;
+
+  }
+}
+@media (max-width: 575.98px) {
+
+  .slimTreatment{
+    padding: 50px;
+  }
+  
+
+  .custom-shape-divider-bottom-1706349415{
+    bottom: -20px;
+  }
+
+  .home .tagline-wrapper  .header-text{
+    font-size: 12px;
+  }
+
+  .home .tagline-wrapper .tagline{
+    font-size: 25px;
+  }
+
+  .home .desc-text{
+    font-size: 10px;
+  }
+
+
+  
+}
