@@ -93,8 +93,8 @@
     </div>
   </div>
 </div>
-@endsection
 @include('Data_Cabang.modal.data-cabang-modal')
+@endsection
 
 @push('js')
 <script type="text/javascript">

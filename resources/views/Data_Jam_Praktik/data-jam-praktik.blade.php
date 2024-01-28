@@ -1,4 +1,5 @@
 @extends('layouts.base')
+
 @section('content')
 <div class="title-box  d-flex gap-2 align-items-baseline"><i class="ri-building-2-line fs-2"></i>
   <p class="fs-3 m-0">Data Jam Praktik</p>
@@ -110,9 +111,9 @@
     </div>
   </div>
 </div>
+@include('Data_Jam_Praktik.modal.data-jam-praktik-modal')
 @endsection
 
-@include('Data_Jam_Praktik.modal.data-jam-praktik-modal')
 
 
 @push('js')

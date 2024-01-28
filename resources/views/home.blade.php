@@ -14,10 +14,42 @@
 </div>
 <div class="content-box p-3 mt-3 rounded rounded-2 bg-white">
   <div class="content rounded rounded-2 border border-1 p-3">
-    <div class="row row-gap-3 row-cols-1 row-cols-md-2">
+    <div class="row row-cols-1 row-gap-2 row-cols-md-2 row-cols-lg-3">
+      <div class="">
+        <div class="card">
+          <div class="card-header text-center">
+            Total Transaksi
+          </div>
+          <div class="card-body text-center">
+            <h2 class="card-title">{{$countTransaksi}}</h2>
+          </div>
+        </div>
+      </div>
+      <div class="">
+        <div class="card">
+          <div class="card-header text-center">
+            Total Cabang
+          </div>
+          <div class="card-body text-center">
+            <h2 class="card-title">{{$countCabang}}</h2>
+          </div>
+        </div>
+      </div>
+      <div class="">
+        <div class="card">
+          <div class="card-header text-center">
+            Total Jam Praktik
+          </div>
+          <div class="card-body text-center">
+            <h2 class="card-title">{{$countJamPraktik}}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row row-gap-3 row-cols-1 row-cols-md-2 mt-3">
       <a href="{{route('admin.data.jam-praktik')}}" class="h-100 card-dashboard text-decoration-none">
         <div class="card h-100">
-          <div class="card-body  row h-100 justify-content-between align-items-center">
+          <div class="card-body row h-100 justify-content-between align-items-center">
             <div class="card-body-content h-100 col-9">
               <h3 class="card-title">Data Jam Praktik</h3>
               <p class="card-text text-secondary fw-light">Fitur ini digunakan untuk mengolah data jam Praktik seperti
@@ -57,7 +89,6 @@
           </div>
         </div>
       </a>
-
     </div>
   </div>
 </div>

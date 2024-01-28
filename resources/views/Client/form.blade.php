@@ -88,7 +88,7 @@
                         <label for="exampleFormControlInput1" class="form-label">Pilih Jadwal Jam Praktik</label>
                         <select class="form-select jam-praktik-select" name="id_jam_praktik" required
                             aria-label="Default select example">
-                            <option value="">
+                            <option value="" class="jadwalPraktikDefault">
                                 Pilih klinik terlebih dahulu
                             </option>
                         </select>
@@ -166,10 +166,14 @@
             },
             success: function(res, status) {
                 // handle success
-                $('select[name="id_jam_praktik"]').empty();
-                res.data.forEach(e => {
-                    $('.jam-praktik-select').append(`<option value="${e.id}">${e.jam_mulai} - ${e.jam_selesai} WIB</option>`);
-                });
+                if(res.data.length > 0){
+                    $('select[name="id_jam_praktik"]').empty();
+                    res.data.forEach(e => {
+                        $('.jam-praktik-select').append(`<option value="${e.id}">${e.jam_mulai} - ${e.jam_selesai} WIB</option>`);
+                    });
+                }else{
+                    $(".jadwalPraktikDefault").html('Kuota tidak tersedia, silahkan pilih tanggal yang lain');
+                }
                
             },
             error: function(xhr) {
@@ -178,9 +182,11 @@
             }
             })
             .always(function (dataOrjqXHR, textStatus, jqXHRorErrorThrown) { 
-                    endLoading();
+                endLoading();
             });
         }
+                endLoading();
+        
     });
 
 
@@ -224,7 +230,7 @@
                         // handle success
                         console.log(res.nama_pasien);
                         
-                        const url = `https://api.whatsapp.com/send?phone=6282132679938&text=Halo%20Admin%20saya%20ingin%20reservasi%20ke%20klinik%20GS%20Qta%20dengan%20rincian%20seperti%20berikut%20%3A%20%0ANama%20%3A%20*${res.nama_pasien}*%0AAlamat%20%3A%20*${res.alamat}*%0ATanggal%20Reservasi%20%3A%20*${res.tanggal_reservasi}*%0AKlinik%20%3A%20*${klinikText}*%0AJam%20Praktik%20%3A%20*${jamPraktikText}*%20WIB%0AKeluhan%20Utama%20%3A%20*${res.keluhan}*`
+                        const url = `https://api.whatsapp.com/send?phone={{$noTelepon}}&text=Halo%20Admin%20saya%20ingin%20reservasi%20ke%20klinik%20GS%20Qta%20dengan%20rincian%20seperti%20berikut%20%3A%20%0ANama%20%3A%20*${res.nama_pasien}*%0AAlamat%20%3A%20*${res.alamat}*%0ATanggal%20Reservasi%20%3A%20*${res.tanggal_reservasi}*%0AKlinik%20%3A%20*${klinikText}*%0AJam%20Praktik%20%3A%20*${jamPraktikText}*%20WIB%0AKeluhan%20Utama%20%3A%20*${res.keluhan}*`
 
                         window.open(url);
                     },

@@ -16,7 +16,7 @@ class ClientController extends Controller
     {
         $user = User::firstOrFail();
 
-        $noTelepon = str_replace('08', '628', $user->no_telepon); 
+        $noTelepon = str_replace('08', '628', ($user->no_telepon ?  $user->no_telepon : '628118850501')); 
 
         return view('Client.client-page', ['noTelepon' => $noTelepon]);
     }
@@ -25,7 +25,11 @@ class ClientController extends Controller
     {
         $branchs = Cabang::where('status', '1')->get();
 
-        return view('Client.form', ['branchs' => $branchs]);
+        $user = User::firstOrFail();
+
+        $noTelepon = str_replace('08', '628', ($user->no_telepon ?  $user->no_telepon : '628118850501')); 
+
+        return view('Client.form', ['branchs' => $branchs, 'noTelepon' => $noTelepon]);
     }
 
     public function getJamPraktik(Request $request)
@@ -40,6 +44,7 @@ class ClientController extends Controller
     
     
             $times = JamPraktik::where('id_cabang', $branchId)
+                    ->where('status', 1)
                     ->orderBy('id', 'desc')    
                     ->get();
     
@@ -53,10 +58,13 @@ class ClientController extends Controller
                         $x++;
                         }
                     }
+
                     if(($times[$i]->kuota - $x) > 0){
                         $times[$i]['jam_mulai'] = (date("H:i", strtotime($times[$i]['jam_mulai'])));
                         $times[$i]['jam_selesai'] = (date("H:i", strtotime($times[$i]['jam_selesai'])));
                         $times[$i]['sisa'] = ($times[$i]->kuota - $x);
+                    }else{
+                        $times->forget($i);
                     }
             }
     

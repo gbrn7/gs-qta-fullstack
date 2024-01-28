@@ -4,12 +4,13 @@
   font-family: 'Poppins', sans-serif;
 }
 
-.wrapper{
-
-}
 
 .login {
   height: 100vh;
+}
+
+.img-logo{
+  width: 160px;
 }
 
 .logo {

@@ -57,7 +57,7 @@
                     </li>
                 </ul>
 
-                <a href="https://wa.me/{{$noTelepon ? $noTelepon : '628118850501'}}"
+                <a href="https://wa.me/{{$noTelepon}}"
                     class="ms-2 d-flex justify-content-center align-items-center align-content-center text-center text-decoration-none text-white bg-success px-2 py-1 rounded-2">
                     <div class="m-0 d-flex gap-2 align-content-center">
                         <i class="ri-whatsapp-line icon-wa mt-0"></i>

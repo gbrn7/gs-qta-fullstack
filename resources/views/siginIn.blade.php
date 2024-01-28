@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="Assets/Css/Login style/main.css" />
   <title>Login | Sehat Qta</title>
 
-  {{-- Icon --}}
-  <link rel="icon" href="{{asset('Assets/Img/hospital-line.png')}}" type="image/x-icon">
+  <!-- Icon -->
+  <link rel="shortcut icon" href="{{asset('Assets/Img/logo-1.png')}}" type="image/x-icon" />
 
   <!-- Bootrsrap Css -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -32,7 +32,7 @@
           <div class="col-8 border border-2 signin-box p-3 p-sm-5 rounded rounded-5">
             <div class="header">
               <div class="text-center">
-                <h1 class="my-0 mt-lg-3">Sehat Qta</h1>
+                <img src="{{asset('Assets/Img/logo-1.png')}}" class="img-logo">
               </div>
               {{-- alert here --}}
               @if($errors->any()) {{-- handling jika ada eror --}}

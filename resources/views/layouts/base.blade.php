@@ -7,8 +7,8 @@
   <meta name="csrf-token" content="{{csrf_token()}}" />
   <title>Sehat Qta</title>
 
-  {{-- Icon --}}
-  <link rel="icon" href="{{asset('Assets/Img/hospital-line.png')}}" type="image/x-icon">
+  <!-- Icon -->
+  <link rel="shortcut icon" href="{{asset('Assets/Img/logo-1.png')}}" type="image/x-icon" />
 
   {{-- Bootrsrap Css --}}
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"

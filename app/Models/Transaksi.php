@@ -30,4 +30,6 @@ class Transaksi extends Model
     public function jamPraktik(){
         return $this->belongsTo(JamPraktik::class, 'id_jam_praktik');
     }
+
+
 }
