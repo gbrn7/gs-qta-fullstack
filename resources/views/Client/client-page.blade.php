@@ -175,6 +175,28 @@
             </div>
         </section>
         <!-- Fisioterapi service end -->
+
+        <!-- Lymphatic massage Start-->
+        <section class="lymphatic massage service-wrapper mt- p-5">
+            <div class="container lymphatic massage-wrapper">
+                <div class="row justify-content-between">
+                    <div class="col-12 col-md-6 text-content mt-3 mt-md-0" id="Lymphatic massage">
+                        <div class="title text-center">
+                            Terapi Lymphatic Drainage Massage
+                        </div>
+                        <div class="desc mt-2 text-center">
+                            Kami menawarkan layanan lymphatic massage. Pijatan drainase limfatik yang lembut dan
+                            berirama meningkatkan relaksasi dan dapat membantu mengurangi stres dan kecemasan.
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 d-flex flex-column justify-content-center">
+                        <img src="{{asset('Assets/Img/massage-therapy-1731456_1920.jpg')}}"
+                            class="img-fluid img-service rounded-3" />
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Lymphatic massage service end -->
     </div>
 
     <!-- Beauty Treatment Start-->
@@ -237,9 +259,11 @@
             <div class="row row-1">
                 <div class="col-12 text-center">
                     <div class="text-center">
-                        <div class="my-0 text-black">
-                            Copyright ©{{date("Y")}} GS Qta
-                        </div>
+                        <a href="{{route('signIn')}}" class="text-decoration-none">
+                            <div class="my-0 text-black">
+                                Copyright ©{{date("Y")}} GS Qta
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>

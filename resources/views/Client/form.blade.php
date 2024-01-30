@@ -172,7 +172,7 @@
                         $('.jam-praktik-select').append(`<option value="${e.id}">${e.jam_mulai} - ${e.jam_selesai} WIB</option>`);
                     });
                 }else{
-                    $(".jadwalPraktikDefault").html('Kuota tidak tersedia, silahkan pilih tanggal yang lain');
+                    $(".jadwalPraktikDefault").html('Kuota tidak tersedia, silahkan pilih tanggal atau cabang klinik yang lain');
                 }
                
             },
