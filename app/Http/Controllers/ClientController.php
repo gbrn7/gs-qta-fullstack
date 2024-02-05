@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\JamPraktik;
 use App\Models\Cabang;
+use App\Models\Informasi;
+use App\Models\Gambar;
+use App\Models\KontenHeader;
+use App\Models\KontenPelayanan;
 use App\Models\Transaksi;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
@@ -16,9 +20,27 @@ class ClientController extends Controller
     {
         $user = User::firstOrFail();
 
+        $informasi = Informasi::first();
+
+        $logo = Gambar::where('nama', 'logo')->first();
+        $homeBg = Gambar::where('nama', 'home-bg')->first();
+
+        $headerContent = KontenHeader::first();
+
+        $JudulkontenPelayanan = KontenPelayanan::where('id',  1)->first();
+        $kontenPelayanan = KontenPelayanan::where('id', '<>', 1)->get();
+
         $noTelepon = str_replace('08', '628', ($user->no_telepon ?  $user->no_telepon : '628118850501')); 
 
-        return view('Client.client-page', ['noTelepon' => $noTelepon]);
+        return view('Client.client-page', [
+            'informasi' => $informasi, 
+            'noTelepon' => $noTelepon, 
+            'logo' => $logo, 
+            'homeBg' => $homeBg, 
+            'headerContent' => $headerContent, 
+            'JudulkontenPelayanan' => $JudulkontenPelayanan,
+            'kontenPelayanan' => $kontenPelayanan, 
+        ]);
     }
 
     public function formView()

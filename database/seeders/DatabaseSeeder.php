@@ -17,6 +17,10 @@ class DatabaseSeeder extends Seeder
             CabangSeeder::class,
             JamPraktikSeeder::class,
             TransaksiSeeder::class,
+            KontenPelayananSeeder::class,
+            KontenHeaderSeeder::class,
+            GambarSeeder::class,
+            InformasiSeeder::class,
         ]);
     }
 }

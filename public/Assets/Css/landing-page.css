@@ -7,7 +7,7 @@ body {
   background-color: whitesmoke;
 }
 .home{
-  background-image: url(../Img/relax-686392_1920.jpg);
+  /* background-image: url(../Img/relax-686392_1920.jpg); */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
