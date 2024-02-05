@@ -4,17 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cabang;
+use App\Models\Gambar;
 use Illuminate\Support\Facades\DB;
 
 class CabangController extends Controller
 {
     public function index(Request $request)
     {
+        $logo = Gambar::where('nama', 'logo')->first();
         $branchs = Cabang::where('nama', 'like', '%'.$request->nama.'%')
                     ->orderBy('id', 'desc')
                     ->paginate(10);
         
-                    return view('Data_Cabang.data-cabang', ['branchs' => $branchs, 'nama' => $request->nama]);
+                    return view('Data_Cabang.data-cabang', ['branchs' => $branchs, 'nama' => $request->nama, 'logo' => $logo]);
     }
 
     public function store(Request $request)

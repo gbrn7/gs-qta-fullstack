@@ -1,7 +1,8 @@
 <div class="sidebar" id="side_nav">
   <div class="header-box px-2 pt-5 pb-2 d-flex justify-content-center">
     <a href="{{route('admin.home')}}">
-      <img src="{{asset('Assets/Img/logo-1.png')}}" class="img-logo">
+      <img src="{{asset(($logo ? 'storage/image/'.$logo->gambar : 'Assets/Img/logo-1.png'))}}"
+        class="img-fluid img-logo" />
     </a>
   </div>
   <div class="list-box  d-flex flex-column justify-content-between gap-5">

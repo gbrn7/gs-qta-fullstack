@@ -48,10 +48,13 @@ class ClientController extends Controller
         $branchs = Cabang::where('status', '1')->get();
 
         $user = User::firstOrFail();
+        
+        $logo = Gambar::where('nama', 'logo')->first();
+
 
         $noTelepon = str_replace('08', '628', ($user->no_telepon ?  $user->no_telepon : '628118850501')); 
 
-        return view('Client.form', ['branchs' => $branchs, 'noTelepon' => $noTelepon]);
+        return view('Client.form', ['branchs' => $branchs, 'noTelepon' => $noTelepon, 'logo' => $logo]);
     }
 
     public function getJamPraktik(Request $request)

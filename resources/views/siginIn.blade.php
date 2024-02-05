@@ -32,7 +32,8 @@
           <div class="col-8 border border-2 signin-box p-3 p-sm-5 rounded rounded-5">
             <div class="header">
               <div class="text-center">
-                <img src="{{asset('Assets/Img/logo-1.png')}}" class="img-logo">
+                <img src="{{asset(($logo ? 'storage/image/'.$logo->gambar : 'Assets/Img/logo-1.png'))}}"
+                  class="img-fluid img-logo" />
               </div>
               {{-- alert here --}}
               @if($errors->any()) {{-- handling jika ada eror --}}

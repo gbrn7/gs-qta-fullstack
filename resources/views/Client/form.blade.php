@@ -48,7 +48,8 @@
             <div class="row justify-content-center align-content-center">
                 <div class="col-12 text-center">
                     <a href="{{route('client.index')}}">
-                        <img src=" {{asset('Assets/Img/logo-1.png')}}" class="img-fluid img-logo" />
+                        <img src="{{asset(($logo ? 'storage/image/'.$logo->gambar : 'Assets/Img/logo-1.png'))}}"
+                            class="img-fluid img-logo" />
                     </a>
                 </div>
                 <div class="col-12 mt-4">

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gambar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Crypt;
 use App\Models\User;
+use Illuminate\Contracts\Encryption\DecryptException;
 
 class AuthController extends Controller
 {
@@ -15,10 +17,12 @@ class AuthController extends Controller
 
         $currentUser = auth()->user();
 
+        $logo = Gambar::where('nama', 'logo')->first();
+        
         if(isset($currentUser)){
             return redirect()->route('admin.home');
         }else{
-           return view('siginIn');
+           return view('siginIn', ['logo' => $logo]);
         }
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\JamPraktik;
 use App\Models\Cabang;
+use App\Models\Gambar;
 use App\Models\Transaksi;
 use Illuminate\Support\Facades\DB;
 
@@ -13,6 +14,7 @@ class JamPraktikController extends Controller
 {
      public function index(Request $request)
      {
+      $logo = Gambar::where('nama', 'logo')->first();
       $branchId = $request->branchId;
       $tanggal = isset($request->tanggal) ? $request->tanggal : date("Y-m-d");
             
@@ -40,7 +42,7 @@ class JamPraktikController extends Controller
 
         $branchs = Cabang::all();
 
-        return view('Data_Jam_Praktik.data-jam-praktik', ['times' => $times, 'branchs' => $branchs, 'selectedBranch' => $request->branchId ? $request->branchId: null, 'tanggal' => $tanggal]);
+        return view('Data_Jam_Praktik.data-jam-praktik', ['times' => $times, 'branchs' => $branchs, 'selectedBranch' => $request->branchId ? $request->branchId: null, 'tanggal' => $tanggal, 'logo' => $logo]);
      }
 
      public function store(Request $request)

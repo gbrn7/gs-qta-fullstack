@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Transaksi;
 use App\Models\Cabang;
+use App\Models\Gambar;
 
 class TransaksiController extends Controller
 {
@@ -12,6 +13,8 @@ class TransaksiController extends Controller
         
         $dateRange = $request->dateRange;
         $dateColumn= $request->dateColumn;
+        $logo = Gambar::where('nama', 'logo')->first();
+
 
         $startDate= $dateRange ? (date("Y-m-d 00-00-00", strtotime(explode(" - ",$dateRange)[0]))) : null;
         $endDate = $dateRange ? (date("Y-m-d 23:59:59", strtotime(explode(" - ",$dateRange)[1]))) : null;
@@ -30,6 +33,7 @@ class TransaksiController extends Controller
         'nama' => $request->nama, 'branchs'=> Cabang::all(), 'selectedBranch' => $request->branchId , 'dateColumn'=> $dateColumn, 
         'startDate' => $dateRange ? date("y-m-d", strtotime(explode(" - ",$dateRange)[0])) : null,
         'endDate' => $dateRange ? date("y-m-d", strtotime(explode(" - ",$dateRange)[1])) : null,
+        'logo' => $logo
         ]) ;
     }
 
