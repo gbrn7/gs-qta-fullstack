@@ -14,8 +14,15 @@ $('.content-right').on('click', function () {
   $('.sidebar').removeClass('active');
 });
 
-$('#example').DataTable({
-  order: [[0, 'desc']]
+$('#jqTable').DataTable({
+  "bAutoWidth": false, // Disable the auto width calculation 
+  "aoColumns": [
+    { "width": "5%" },
+    { "width": "20%" },
+    { "width": "40%" },
+    { "width": "20%" },
+    { "width": "15%" },
+  ]
 });
 
 

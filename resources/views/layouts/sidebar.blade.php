@@ -1,7 +1,7 @@
 <div class="sidebar" id="side_nav">
   <div class="header-box px-2 pt-5 pb-2 d-flex justify-content-center">
     <a href="{{route('admin.home')}}">
-      <img src="{{asset(($logo ? 'storage/image/'.$logo->gambar : 'Assets/Img/logo-1.png'))}}"
+      <img src="{{asset((isset($logo) ? 'storage/image/'.$logo->gambar : 'Assets/Img/logo-1.png'))}}"
         class="img-fluid img-logo" />
     </a>
   </div>
@@ -30,7 +30,7 @@
       <li class="rounded {{Request::segment(2) === 'manajemen-konten' ? 'active' : ''}} rounded-2">
         <a href="{{route('admin.manajemen.konten')}}"
           class="text-decoration-none px-3 py-3 rounded rounded-2 d-flex align-items-baseline"><i
-            class="ri-apps-line me-2"></i>Manajemen Konten</a>
+            class="ri-pages-line me-2"></i>Manajemen Konten</a>
       </li>
     </ul>
   </div>

@@ -60,7 +60,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
         Route::get('/', [KontenController::class, 'index'])->name('admin.manajemen.konten');
         Route::get('/header', [KontenController::class, 'kontenHeader'])->name('admin.manajemen.konten.header');
         Route::put('/header', [KontenController::class, 'updateKontenHeader'])->name('admin.manajemen.konten.header.update');
-    
+        
+        Route::prefix('body')->group(function (){
+            Route::get('/', [KontenController::class, 'kontenBody'])->name('admin.manajemen.konten.body');
+            Route::delete('/', [KontenController::class, 'deleteKontenBody'])->name('admin.manajemen.konten.body.delete');
+            Route::put('/', [KontenController::class, 'updateJudulKontenBody'])->name('admin.manajemen.konten.body.judul.update');
+        });
     });
 
 

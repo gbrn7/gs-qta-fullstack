@@ -9,7 +9,8 @@
     <title>GS Qta | HomePage</title>
 
     <!-- Icon -->
-    <link rel="icon" href="{{asset('Assets/Img/logo-1.png')}}" type="image/x-icon" />
+    <link rel="icon" href="{{asset((isset($logo) ? 'storage/image/'.$logo->gambar : 'Assets/Img/logo-1.png'))}}"
+        type="image/x-icon" />
 
     {{-- Bootrsrap Css --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
