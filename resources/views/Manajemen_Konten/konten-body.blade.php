@@ -29,7 +29,8 @@
         </ul>
       </div>
       @endif
-      <a href="#" class="btn btn-success text-decoration-none"><i class="ri-add-box-line"></i> Tambah Alternatif
+      <a href="{{route('admin.manajemen.konten.body.create')}}" class="btn btn-success text-decoration-none"><i
+          class="ri-add-box-line"></i> Tambah Konten Body
       </a>
       <div id="edit" data-bs-toggle="modal" data-bs-target="#editJudulBody" class="btn btn-warning"><i
           class="bx bx-edit me-2"></i>Edit Judul</div>

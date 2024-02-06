@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="title-box  d-flex gap-2 align-items-baseline"><i class="ri-pages-line fs-2"></i>
-  <p class="fs-3 m-0">Manajemen Konten Header</p>
+  <p class="fs-3 m-0">Manajemen Konten Body</p>
 </div>
 <div class="breadcrumbs-box rounded rounded-2 bg-white p-2 mt-2">
   <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
@@ -12,7 +12,10 @@
       </li>
       <li class="breadcrumb-item" aria-current="page"> <a href="{{route('admin.manajemen.konten')}}"
           class="text-decoration-none">Manajemen Konten</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Manajemen Konten Header</li>
+      <li class="breadcrumb-item" aria-current="page"> <a href="{{route('admin.manajemen.konten.body')}}"
+          class="text-decoration-none">Manajemen
+          Konten Body</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Tambah Konten Body</li>
     </ol>
   </nav>
 </div>
@@ -21,35 +24,32 @@
     <div class="row justify-content-start">
       <div class="col-12 col-md-5 h-100">
         <img
-          src="{{(isset($homeBg) ? asset('storage/image/'.$homeBg->gambar) : asset('Assets/Img/relax-686392_1920.jpg'))}}"
-          class="img-fluid img-thumbnail rounded-2 img-bg">
+          src="{{(isset($content) ? asset('storage/image/'.$content->thumbnail) : asset('Assets/Img/default-thumbnail.png'))}}"
+          alt="image" class="img-fluid img-thumbnail rounded-2 img-bg">
       </div>
       <div class="col-12 col-md-5 mt-3 mt-md-0">
-        <form action="{{route('admin.manajemen.konten.header.update')}}" enctype="multipart/form-data" method="post">
+        <form
+          action="{{ isset($content) ? route('admin.manajemen.konten.header.update') : route('admin.manajemen.konten.body.store')}}"
+          enctype="multipart/form-data" method="post">
           @csrf
-          @method('put')
+          @method(isset($content) ? 'put' : 'post')
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Judul</label>
-            <input required type="text" class="form-control" name="judul" value="{{$headerContent->judul}}">
-          </div>
-          <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Tagline</label>
-            <input required type="text" class="form-control" name="tagline" value="{{$headerContent->tagline}}">
+            <input required type="text" class="form-control" name="judul"
+              value="{{ isset($content) ?  $content->judul : ''}}">
           </div>
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Deskripsi</label>
             <textarea required class="form-control" name="deskripsi" id="exampleFormControlTextarea1"
-              rows="3">{{$headerContent->deskripsi}}</textarea>
+              rows="3">{{isset($content) ?  $content->deskripsi : ''}}</textarea>
           </div>
           <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Teks Tombol</label>
-            <input required type="text" class="form-control" name="teks_btn" value="{{$headerContent->teks_btn}}">
+            <label for="exampleFormControlTextarea1" class="form-label">Gambar</label>
+            <input type="file" id="input-file" @if (!isset($content)) required @endif class="form-control"
+              name="thumbnail">
           </div>
-          <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Gambar Background</label>
-            <input type="file" id="input-file" class="form-control" name="gambar">
-          </div>
-          <button type="submit" class="btn btn-warning">Perbarui</button>
+          <button type="submit" @class([ 'btn' , 'btn-success'=> !isset($content), 'btn-warning' => isset($content)
+            ])>{{isset($content) ? 'Perbarui' : 'Tambahkan'}}</button>
         </form>
       </div>
     </div>

@@ -117,7 +117,6 @@ class KontenController extends Controller
         }
     }
 
-
     public function updateJudulKontenBody(Request $request)
     {
         $NewJudulkontenPelayanan = $request->validate(
@@ -143,4 +142,45 @@ class KontenController extends Controller
 
     }
 
+    public function createKontenBody()
+    {
+        $logo = Gambar::where('nama', 'logo')->first();
+
+        return view('Manajemen_Konten.konten-body-detail', [
+            'logo' => $logo,
+        ]);
+    }
+
+    public function storeKontenBody(Request $request)
+    {
+        $newKontenBody = $request->validate(
+            [
+                'judul' => 'required|string',
+                'deskripsi' => 'required|string',
+                'thumbnail' => 'required|image|mimes:png,jpg,jpeg|max:1024'
+            ], 
+            [
+                'required' => 'Data :attribute harus diisi',
+                'string' => 'Data :attribute harus bertipe String',
+                'image' => 'File gambar harus berjenis gambar',
+                'mimes' => 'File gambar harus bertipe :values'
+            ]
+        );
+
+        try {            
+            $image = $newKontenBody['thumbnail'];
+            $imageName = Str::random(10).$image->getClientOriginalName();
+            
+            $image->storeAs('public/image', $imageName);
+
+            $newKontenBody['thumbnail'] = $imageName;
+
+            $newKontenBody = KontenPelayanan::create($newKontenBody);
+
+            return redirect()->route('admin.manajemen.konten.body')->with('toast_success', 'Berhasil menambah konten'.$newKontenBody->judul);
+
+        } catch (\Throwable $th) {
+            return back()->with('toast_error', $th->getMessage());
+        }
+    }
 }
