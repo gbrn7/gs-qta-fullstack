@@ -70,6 +70,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
             Route::get('/edit/{id}', [KontenController::class, 'editKontenBody'])->name('admin.manajemen.konten.body.edit');
             Route::put('/update/{id}', [KontenController::class, 'updateKontenBody'])->name('admin.manajemen.konten.body.update');
         });
+
+        Route::prefix('informasi')->group(function (){
+            Route::get('/', [KontenController::class, 'editInformasi'])->name('admin.manajemen.konten.informasi');
+            Route::put('/', [KontenController::class, 'updateInformasi'])->name('admin.manajemen.konten.informasi.update');
+        });
+
     });
 
 

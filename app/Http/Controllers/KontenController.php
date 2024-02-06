@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gambar;
+use App\Models\Informasi;
 use App\Models\KontenHeader;
 use App\Models\KontenPelayanan;
 use Illuminate\Http\Request;
@@ -228,6 +229,42 @@ class KontenController extends Controller
             $oldKontenBody->update($newKontenBody);
         
             return redirect()->route('admin.manajemen.konten.body')->with('toast_success', 'Berhasil memperbarui konten body '.$newKontenBody['judul']);
+
+        } catch (\Throwable $th) {
+            return back()->with('toast_error', $th->getMessage());
+        }
+    }
+
+    public function editInformasi()
+    {
+        $informasi = Informasi::first();
+
+        return view('Manajemen_Konten.konten-informasi', [
+            'informasi' => $informasi
+        ]);
+    }
+
+    public function updateInformasi(Request $request)
+    {
+        $newInformasi = $request->validate(
+            [
+                'judul' => 'required|string',
+                'deskripsi' => 'required|string',
+                'status' => 'required|boolean'
+            ], 
+            [
+                'required' => 'Data :attribute harus diisi',
+                'string' => 'Data :attribute harus bertipe String',
+            ]
+        );
+
+        try {
+            $oldInformasi = Informasi::first();
+
+            $oldInformasi->update($newInformasi);
+        
+
+            return redirect()->route('admin.manajemen.konten.informasi')->with('toast_success', 'Berhasil memperbarui informasi '.$newInformasi['judul']);
 
         } catch (\Throwable $th) {
             return back()->with('toast_error', $th->getMessage());
