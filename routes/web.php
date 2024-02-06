@@ -7,6 +7,7 @@ use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\CabangController;
 use App\Http\Controllers\JamPraktikController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\KontenController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,6 +54,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::prefix('/data-transaksi')->group(function () {
         Route::get('/', [TransaksiController::class, 'index'])->name('admin.data.transaksi');
         Route::post('/', [TransaksiController::class, 'index'])->name('admin.data.transaksi.filter');
+    });
+
+    Route::prefix('manajemen-konten')->group(function () {
+        Route::get('/', [KontenController::class, 'index'])->name('admin.manajemen.konten');
+        Route::get('/header', [KontenController::class, 'kontenHeader'])->name('admin.manajemen.konten.header');
+        Route::put('/header', [KontenController::class, 'updateKontenHeader'])->name('admin.manajemen.konten.header.update');
+    
     });
 
 

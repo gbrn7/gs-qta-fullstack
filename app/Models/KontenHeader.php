@@ -11,6 +11,8 @@ class KontenHeader extends Model
 
     protected $table = 'konten_header';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'judul',
         'tagline',

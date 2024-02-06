@@ -11,6 +11,8 @@ class Gambar extends Model
 
     protected $table = 'gambar';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'nama',
         'gambar',

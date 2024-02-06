@@ -100,7 +100,8 @@ class ClientController extends Controller
 
     } 
 
-    public function storeTransaction(Request $request){
+    public function storeTransaction(Request $request)
+    {
         $validation = [
             'id_cabang' => 'required|string',
             'id_jam_praktik' => 'required|string',

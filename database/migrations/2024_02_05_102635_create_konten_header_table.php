@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('judul');
             $table->string('tagline');    
-            $table->string('deskripsi');    
+            $table->text('deskripsi');    
             $table->string('teks_btn');    
         });
     }

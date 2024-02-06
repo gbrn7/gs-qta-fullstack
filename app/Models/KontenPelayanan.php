@@ -11,6 +11,8 @@ class KontenPelayanan extends Model
 
     protected $table = 'konten_pelayanan';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'judul',
         'deskripsi',

@@ -7,7 +7,8 @@
 <div class="breadcrumbs-box mt-2 rounded rounded-2 bg-white p-2">
   <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
     <ol class="breadcrumb m-0">
-      <li class="breadcrumb-item d-flex gap-2 align-items-center"><i class="ri-calendar-schedule-line"></i>Sehat Qta
+      <li class="breadcrumb-item d-flex gap-2 align-items-center"><a href="{{route('admin.home')}}"
+          class="text-decoration-none"> <i class="ri-dashboard-line me-2"></i>GS Sehat Qta</a>
       </li>
       <li class="breadcrumb-item active" aria-current="page">Data Jam Praktik</li>
     </ol>

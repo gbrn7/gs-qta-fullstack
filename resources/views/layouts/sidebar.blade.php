@@ -28,7 +28,8 @@
             class="ri-arrow-left-right-line me-2"></i>Data Transaksi</a>
       </li>
       <li class="rounded {{Request::segment(2) === 'manajemen-konten' ? 'active' : ''}} rounded-2">
-        <a href="#" class="text-decoration-none px-3 py-3 rounded rounded-2 d-flex align-items-baseline"><i
+        <a href="{{route('admin.manajemen.konten')}}"
+          class="text-decoration-none px-3 py-3 rounded rounded-2 d-flex align-items-baseline"><i
             class="ri-apps-line me-2"></i>Manajemen Konten</a>
       </li>
     </ul>
