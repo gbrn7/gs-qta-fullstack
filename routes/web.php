@@ -76,6 +76,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
             Route::put('/', [KontenController::class, 'updateInformasi'])->name('admin.manajemen.konten.informasi.update');
         });
 
+        Route::prefix('logo')->group(function (){
+            Route::get('/', [KontenController::class, 'editLogo'])->name('admin.manajemen.konten.logo');
+            Route::put('/', [KontenController::class, 'updateLogo'])->name('admin.manajemen.konten.logo.update');
+        });
+
     });
 
 

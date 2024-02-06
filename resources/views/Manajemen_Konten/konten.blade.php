@@ -59,7 +59,7 @@
           </div>
         </div>
       </a>
-      <a href="#" class="h-100 card-dashboard text-decoration-none">
+      <a href="{{route('admin.manajemen.konten.logo')}}" class="h-100 card-dashboard text-decoration-none">
         <div class="card h-100">
           <div class="card-body  row h-100 justify-content-between align-items-center">
             <div class="card-body-content h-100 col-9">

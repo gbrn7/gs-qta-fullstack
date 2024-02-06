@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
-<div class="title-box  d-flex gap-2 align-items-baseline"><i class="ri-pages-line fs-2"></i>
+<div class="title-box  d-flex gap-2 align-items-baseline"><i class="ri-window-line fs-2"></i>
   <p class="fs-3 m-0">Manajemen Konten Header</p>
 </div>
 <div class="breadcrumbs-box rounded rounded-2 bg-white p-2 mt-2">

@@ -270,4 +270,47 @@ class KontenController extends Controller
             return back()->with('toast_error', $th->getMessage());
         }
     }
+    
+    public function editLogo()
+    {
+        $logo = Gambar::where('nama', 'logo')->first();
+
+        return view('Manajemen_Konten.konten-logo', [
+            'logo' => $logo
+        ]);
+    }
+
+    public function updateLogo(Request $request)
+    {
+        $newLogo = $request->validate(
+            [
+                'gambar' => 'nullable|image|mimes:png,jpg,jpeg|max:1024'
+            ], 
+            [
+                'image' => 'File gambar harus berjenis gambar',
+                'mimes' => 'File gambar harus bertipe :values'
+            ]
+        );
+
+        try {
+            $oldLogo = Gambar::where('nama', 'logo')->first();            ;
+
+            $image = $newLogo['gambar'];
+
+            $imageName = Str::random(10).$image->getClientOriginalName();
+            
+            $image->storeAs('public/image', $imageName);
+            Storage::delete('public/image/'.$oldLogo->gambar);
+            $newLogo['gambar'] = $imageName;
+
+            $oldLogo->update($newLogo);
+        
+            return back()->with('toast_success', 'Berhasil memperbarui logo');
+
+        } catch (\Throwable $th) {
+            return back()->with('toast_error', $th->getMessage());
+        }
+    }
+
+
 }
