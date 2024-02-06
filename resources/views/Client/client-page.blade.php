@@ -48,21 +48,6 @@
             </button>
             <div class="collapse nav-collapse rounded-2 mt-3 p-3 navbar-collapse justify-content-end toggle"
                 id="navbarNav">
-                <ul class="navbar-nav text-center text-lg-start mt-4 mb-4 mb-lg-0 mt-lg-0 d-flex align-items-center">
-                    <li class="nav-item mt-3 mt-lg-0">
-                        <a class="text-white nav-link nav-link-1 nav-link-active" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item mt-3 mt-lg-0">
-                        <a class="text-white nav-link nav-link-2" href="#Akupuntur">Akupuntur</a>
-                    </li>
-                    <li class="nav-item mt-3 mt-lg-0">
-                        <a class="text-white nav-link nav-link-4" href="#Fisioterapi">Fisioterapi</a>
-                    </li>
-                    <li class="nav-item mt-3 mt-lg-0">
-                        <a class="text-white nav-link nav-link-4" href="#Pelangsingan">Kecantikan</a>
-                    </li>
-                </ul>
-
                 <a href="https://wa.me/{{$noTelepon}}"
                     class="ms-2 d-flex justify-content-center align-items-center align-content-center text-center text-decoration-none text-white bg-success px-2 py-1 rounded-2">
                     <div class="m-0 d-flex gap-2 align-content-center">
