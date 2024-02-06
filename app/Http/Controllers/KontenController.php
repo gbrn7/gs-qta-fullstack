@@ -177,7 +177,57 @@ class KontenController extends Controller
 
             $newKontenBody = KontenPelayanan::create($newKontenBody);
 
-            return redirect()->route('admin.manajemen.konten.body')->with('toast_success', 'Berhasil menambah konten'.$newKontenBody->judul);
+            return redirect()->route('admin.manajemen.konten.body')->with('toast_success', 'Berhasil menambah konten '.$newKontenBody->judul);
+
+        } catch (\Throwable $th) {
+            return back()->with('toast_error', $th->getMessage());
+        }
+    }
+
+    public function editKontenBody(Request $request)
+    {
+        $logo = Gambar::where('nama', 'logo')->first();
+        $content = KontenPelayanan::find($request->id);
+
+        return view('Manajemen_Konten.konten-body-detail', [
+           'logo' => $logo,
+            'content' => $content
+        ]);
+        
+    }
+
+    public function updateKontenBody(Request $request)
+    {
+        
+        $newKontenBody = $request->validate(
+            [
+                'judul' => 'required|string',
+                'deskripsi' => 'required|string',
+                'thumbnail' => 'nullable|image|mimes:png,jpg,jpeg|max:1024'
+            ], 
+            [
+                'required' => 'Data :attribute harus diisi',
+                'string' => 'Data :attribute harus bertipe String',
+                'image' => 'File gambar harus berjenis gambar',
+                'mimes' => 'File gambar harus bertipe :values'
+            ]
+        );
+
+        try {
+            $oldKontenBody = KontenPelayanan::find($request->id);
+            
+            if(!empty($newKontenBody['thumbnail'])){
+                $image = $newKontenBody['thumbnail'];
+                $imageName = Str::random(10).$image->getClientOriginalName();
+                
+                $image->storeAs('public/image', $imageName);
+                Storage::delete('public/image/'.$oldKontenBody->thumbnail);
+                $newKontenBody['thumbnail'] = $imageName;
+            }
+
+            $oldKontenBody->update($newKontenBody);
+        
+            return redirect()->route('admin.manajemen.konten.body')->with('toast_success', 'Berhasil memperbarui konten body '.$newKontenBody['judul']);
 
         } catch (\Throwable $th) {
             return back()->with('toast_error', $th->getMessage());

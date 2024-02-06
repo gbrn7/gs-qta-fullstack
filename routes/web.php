@@ -67,6 +67,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
             Route::put('/', [KontenController::class, 'updateJudulKontenBody'])->name('admin.manajemen.konten.body.judul.update');
             Route::get('/create', [KontenController::class, 'createKontenBody'])->name('admin.manajemen.konten.body.create');
             Route::post('/store', [KontenController::class, 'storeKontenBody'])->name('admin.manajemen.konten.body.store');
+            Route::get('/edit/{id}', [KontenController::class, 'editKontenBody'])->name('admin.manajemen.konten.body.edit');
+            Route::put('/update/{id}', [KontenController::class, 'updateKontenBody'])->name('admin.manajemen.konten.body.update');
         });
     });
 

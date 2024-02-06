@@ -29,7 +29,7 @@
       </div>
       <div class="col-12 col-md-5 mt-3 mt-md-0">
         <form
-          action="{{ isset($content) ? route('admin.manajemen.konten.header.update') : route('admin.manajemen.konten.body.store')}}"
+          action="{{ isset($content) ? route('admin.manajemen.konten.body.update', $content->id) : route('admin.manajemen.konten.body.store')}}"
           enctype="multipart/form-data" method="post">
           @csrf
           @method(isset($content) ? 'put' : 'post')

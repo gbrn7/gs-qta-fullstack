@@ -55,8 +55,8 @@
             <td><img alt="img" src="{{ asset('storage/image/'.$item->thumbnail)}}" class="img-fluid"></td>
             <td class="">
               <div class="btn-wrapper d-flex gap-2 flex-wrap">
-                <a href="#" data-id="{{$item->id}}" class="btn edit btn-action btn-warning text-white"><i
-                    class="bx bx-edit"></i></a>
+                <a href="{{route('admin.manajemen.konten.body.edit', $item->id)}}"
+                  class="btn edit btn-action btn-warning text-white"><i class="bx bx-edit"></i></a>
                 <a href="#" class="delete btn btn-action btn-danger text-white" data-judul="{{$item->judul}}"
                   data-id="{{$item->id}}">
                   <i class="bx bx-trash"></i>
