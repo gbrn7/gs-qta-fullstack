@@ -31,7 +31,7 @@
             <label for="exampleFormControlTextarea1" class="form-label">Gambar</label>
             <input type="file" id="input-file" required class="form-control" name="gambar">
           </div>
-          <button type="submit" class="btn btn-warning">Perbarui</button>
+          <button type="submit" class="btn btn-warning text-white">Perbarui</button>
         </form>
       </div>
     </div>

@@ -165,6 +165,10 @@ color: black;
   font-size: 15px;
 }
 
+.img-icon{
+  max-width: 100px;
+}
+
 .content .pagination {
   --bs-pagination-focus-box-shadow:0 0 0 0.25rem rgb(0 0 0 / 25%);
   justify-content: center;

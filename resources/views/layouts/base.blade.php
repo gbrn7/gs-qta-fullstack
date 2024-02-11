@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="csrf-token" content="{{csrf_token()}}" />
-  <title>Sehat Qta</title>
+  <title>Admin | GS Qta</title>
 
   <!-- Icon -->
   <link rel="shortcut icon" href="{{asset((isset($logo) ? 'storage/image/'.$logo->gambar : 'Assets/Img/logo-1.png'))}}"

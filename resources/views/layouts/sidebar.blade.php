@@ -32,6 +32,11 @@
           class="text-decoration-none px-3 py-3 rounded rounded-2 d-flex align-items-baseline"><i
             class="ri-pages-line me-2"></i>Manajemen Konten</a>
       </li>
+      <li class="rounded {{Request::segment(2) === 'manajemen-sosmed' ? 'active' : ''}} rounded-2">
+        <a href="{{route('admin.manajemen.sosmed')}}"
+          class="text-decoration-none px-3 py-3 rounded rounded-2 d-flex align-items-baseline"><i
+            class="ri-group-2-line me-2"></i>Manajemen Sosmed</a>
+      </li>
     </ul>
   </div>
 

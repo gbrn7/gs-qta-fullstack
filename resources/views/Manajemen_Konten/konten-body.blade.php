@@ -32,8 +32,8 @@
       <a href="{{route('admin.manajemen.konten.body.create')}}" class="btn btn-success text-decoration-none"><i
           class="ri-add-box-line"></i> Tambah Konten Body
       </a>
-      <div id="edit" data-bs-toggle="modal" data-bs-target="#editJudulBody" class="btn btn-warning"><i
-          class="bx bx-edit me-2"></i>Edit Judul</div>
+      <div id="edit" data-bs-toggle="modal" data-bs-target="#editJudulBody" class="btn text-white btn-warning"><i
+          class="bx bx-edit me-2 text-white"></i>Edit Judul</div>
     </div>
     <div class="Produk mt-2 mb-2">
       <table id="jqTable" class="table table-striped mt-3 table-hover" style="width: 100%">

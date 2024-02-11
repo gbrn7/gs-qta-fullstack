@@ -8,6 +8,8 @@ use App\Http\Controllers\CabangController;
 use App\Http\Controllers\JamPraktikController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\KontenController;
+use App\Http\Controllers\SosmedController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -81,6 +83,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
             Route::put('/', [KontenController::class, 'updateLogo'])->name('admin.manajemen.konten.logo.update');
         });
 
+    });
+
+    Route::prefix('manajemen-sosmed')->group(function (){
+        Route::get('/', [SosmedController::class, 'index'])->name('admin.manajemen.sosmed');
+        Route::post('/', [SosmedController::class, 'store'])->name('admin.manajemen.sosmed.create');
+        Route::put('/', [SosmedController::class, 'update'])->name('admin.manajemen.sosmed.edit');
+        Route::delete('/', [SosmedController::class, 'delete'])->name('admin.manajemen.sosmed.delete');
     });
 
 

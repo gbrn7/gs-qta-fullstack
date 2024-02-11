@@ -39,7 +39,7 @@
               <option {{!$informasi->status ? 'selected' : '' }} value="0">Tidak Aktif</option>
             </select>
           </div>
-          <button type="submit" class="btn btn-warning">Perbarui</button>
+          <button type="submit" class="btn btn-warning text-white">Perbarui</button>
         </form>
       </div>
     </div>

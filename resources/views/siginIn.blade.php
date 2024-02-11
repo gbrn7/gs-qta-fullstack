@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="Assets/Css/Login style/main.css" />
-  <title>Login | Sehat Qta</title>
+  <title>Login | GS Qta</title>
 
   <!-- Icon -->
   <link rel="shortcut icon" href="{{asset('Assets/Img/logo-1.png')}}" type="image/x-icon" />

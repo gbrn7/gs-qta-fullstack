@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             KontenHeaderSeeder::class,
             GambarSeeder::class,
             InformasiSeeder::class,
+            SosmedSeeder::class,
         ]);
     }
 }
