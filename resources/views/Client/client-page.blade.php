@@ -110,7 +110,7 @@
 
     <div class="service mt-3">
         <div class="col-12 text-center">
-            <span class="text-header p-2 rounded-2">{{$JudulkontenPelayanan->judul}}</span>
+            <span class="text-header p-2 rounded-2">{{$judulkontenPelayanan->judul}}</span>
         </div>
 
         @foreach ($kontenPelayanan as $item)
@@ -160,13 +160,31 @@
     <section class="footer bg-white">
         <div class="container footer-wrapper bg-white py-3">
             <div class="row row-1">
-                <div class="col-12 text-center">
-                    <div class="text-center">
-                        <a href="{{route('signIn')}}" class="text-decoration-none">
-                            <div class="my-0 text-black">
+                <div class="col-6">
+                    <div class="mb-3">
+                        <a href="{{route('client.index')}}">
+                            <img src="{{asset(($logo ? 'storage/image/'.$logo->gambar : 'Assets/Img/logo-1.png'))}}"
+                                class="img-fluid img-logo" />
+                        </a>
+                    </div>
+                    <div class="">
+                        <a href=" {{route('signIn')}}" class="text-decoration-none">
+                            <div class="my-0 text-black fw-light">
                                 Copyright ©{{date("Y")}} GS Qta
                             </div>
                         </a>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="text-end mb-3">
+                        <a href="{{route('signIn')}}" class="text-black text-decoration-none ">Admin</a>
+                    </div>
+                    <div class="text-end">
+                        @foreach ($sosmed as $item)
+                        <a target="_blank" href="{{$item->link}}" class="text-decoration-none">
+                            <img src="{{'storage/image/'.$item->icon}}" class="img-footer" alt="Sosmed" />
+                        </a>
+                        @endforeach
                     </div>
                 </div>
             </div>

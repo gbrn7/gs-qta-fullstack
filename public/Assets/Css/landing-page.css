@@ -29,6 +29,9 @@ body {
   font-size: 20px;
 }
 
+.img-footer{
+  max-width: 40px !important;
+}
 
 .wave-2{
   top: -10px;

@@ -16,7 +16,7 @@ class InformasiSeeder extends Seeder
         DB::table('informasi')->insert([
             'judul' => 'Pemberitahuan',
             'deskripsi' => 'Libur imlek pada tanggal 10 - 12 Februari',
-            'status' => true
+            'status' => false
         ]);
     }
 }
