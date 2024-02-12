@@ -168,6 +168,8 @@
                         </a>
                     </div>
                     <div class="">
+                        <a href="{{route('signIn')}}" class="text-black text-decoration-none fw-light">Admin</a>
+
                         <a href=" {{route('signIn')}}" class="text-decoration-none">
                             <div class="my-0 text-black fw-light">
                                 Copyright ©{{date("Y")}} GS Qta
@@ -176,9 +178,7 @@
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="text-end mb-3">
-                        <a href="{{route('signIn')}}" class="text-black text-decoration-none ">Admin</a>
-                    </div>
+
                     <div class="text-end">
                         @foreach ($sosmed as $item)
                         <a target="_blank" href="{{$item->link}}" class="text-decoration-none">

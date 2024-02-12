@@ -48,7 +48,8 @@
             <input type="file" id="input-file" @if (!isset($content)) required @endif class="form-control"
               name="thumbnail">
           </div>
-          <button type="submit" @class([ 'btn' , 'btn-success'=> !isset($content), 'btn-warning' => isset($content)
+          <button type="submit" @class([ 'btn' , 'btn-success'=> !isset($content), 'btn-warning text-white' =>
+            isset($content),
             ])>{{isset($content) ? 'Perbarui' : 'Tambahkan'}}</button>
         </form>
       </div>

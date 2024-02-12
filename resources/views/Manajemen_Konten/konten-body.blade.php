@@ -91,7 +91,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-        <button type="submit" class="btn btn-warning">Simpan</button>
+        <button type="submit" class="btn btn-warning text-white">Simpan</button>
       </div>
       </form>
     </div>
