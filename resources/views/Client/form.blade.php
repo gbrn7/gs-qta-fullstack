@@ -79,12 +79,16 @@
                         <label for="exampleFormControlInput1" class="form-label">Pilih Klinik</label>
                         <select class="form-select" id="klinik-select" required name="id_cabang"
                             aria-label="Default select example" required>
+                            @forelse ($branchs as $branch)
+                            @if ($loop->first)
                             <option selected value="">
                                 Klik untuk memilih Klinik
                             </option>
-                            @foreach ($branchs as $branch)
+                            @endif
                             <option value="{{$branch->id}}">{{$branch->nama.' - '.$branch->alamat}}</option>
-                            @endforeach
+                            @empty
+                            <option value="">Cabang klinik tidak tersedia</option>
+                            @endforelse
                         </select>
                     </div>
                     <div class="mb-3">
