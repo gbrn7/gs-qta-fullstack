@@ -130,7 +130,7 @@ class ClientController extends Controller
         DB::beginTransaction();
 
         try {
-            $jamPraktik = JamPraktik::find($request->id_cabang);
+            $jamPraktik = JamPraktik::find($request->id_jam_praktik);
             
             $transactions = Transaksi::create([
                 'id_cabang' => $request->id_cabang,

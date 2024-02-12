@@ -153,11 +153,8 @@
         startLoading();
 
         if(!branchID || !tanggalReservasi){
-            Toast.fire({
-                icon: 'warning',
-                title: 'Warning',
-                text: 'Lengkapi tanggal reservasi dan klinik'
-            })
+            $('select[name="id_jam_praktik"]').empty().append(`<option value="">Pilih klinik terlebih dahulu</option>`);
+
         }else{
             $.ajax({
             url: "{{route('client.getJamPraktik')}}",
@@ -175,7 +172,7 @@
                         $('.jam-praktik-select').append(`<option value="${e.id}">${e.jam_mulai} - ${e.jam_selesai} WIB</option>`);
                     });
                 }else{
-                    $(".jadwalPraktikDefault").html('Kuota tidak tersedia, silahkan pilih tanggal atau cabang klinik yang lain');
+                    $('select[name="id_jam_praktik"]').empty().append(`<option value="">Kuota tidak tersedia, silahkan pilih tanggal atau cabang klinik yang lain</option>`);;
                 }
                
             },
@@ -249,11 +246,8 @@
                         console.log(xhr, xhr?.responseJSON?.errors);
                     }
                 })
-                .always(function (dataOrjqXHR, textStatus, jqXHRorErrorThrown) { 
-                    endLoading();
-                });
         };
-
+        endLoading();
 
     });
 </script>

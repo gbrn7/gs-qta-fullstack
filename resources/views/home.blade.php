@@ -107,8 +107,8 @@
         <div class="card h-100">
           <div class="card-body  row h-100 justify-content-between align-items-center">
             <div class="card-body-content h-100 col-9">
-              <h3 class="card-title">Manajemen Konten</h3>
-              <p class="card-text text-secondary fw-light">Fitur ini digunakan untuk manajemen konten sosmed</p>
+              <h3 class="card-title">Manajemen Sosmed</h3>
+              <p class="card-text text-secondary fw-light">Fitur ini digunakan untuk manajemen info sosmed</p>
             </div>
             <div class="col-2 col-sm-3 d-flex justify-content-center img-menu"><i class="ri-group-2-line me-2"></i>
             </div>
